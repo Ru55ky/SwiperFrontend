@@ -39,15 +39,15 @@ export default function ChatComponent () {
 		}
 	}
 
-	useEffect(() => {
-		if(!user?.id) {
-			router.push('/login')
-		}
-		if(currentRoom && currentRoom.user_id !== 0) {
-			getMessagesHandler()
-		}
-	}, [currentRoom]);
-	console.log('SS', user)
+	// useEffect(() => {
+	// 	if(!user?.id) {
+	// 		router.push('/login')
+	// 	}
+	// 	if(currentRoom && currentRoom.user_id !== 0) {
+	// 		getMessagesHandler()
+	// 	}
+	// }, [currentRoom]);
+
 	return (
 		<div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', width: 600, margin: '0 auto', height: 'auto'}}>
 			<div style={{width: 600, minHeight: '70vh', maxHeight: '100vh'}}></div>

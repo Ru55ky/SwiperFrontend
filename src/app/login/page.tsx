@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import {useDispatch} from "react-redux";
 import {updateUser} from "@/store/features/userSlice";
 import {useAppSelector} from "@/store/hooks";
+import Cookies from "js-cookie";
 
 export default function Login () {
 	const router = useRouter()
@@ -31,6 +32,8 @@ async function createUserHandler(event: { preventDefault: () => void; target: { 
 			body = {
 				username: typeEvent[0].value,
 				password: typeEvent[1].value,
+				// username: 'PCBoyarin',
+				// password: 'PH15ju74Vi23'
 			}
 		}
 
@@ -44,11 +47,15 @@ async function createUserHandler(event: { preventDefault: () => void; target: { 
 
 		} else {
 			const response = await loginUser(body)
-			dispatch(updateUser(response.data))
-			router.push('/')
+			if(response) {
+				console.log(response)
+				dispatch(updateUser(response.data))
+				router.push('/')
+			}
 		}
-
-	} catch (err) {}
+	} catch (err) {
+		console.log('Произошла ошибка', err)
+	}
 }
 
 const confirmPassword = (password: string, confirmPass: string) => password === confirmPass
@@ -74,8 +81,11 @@ const confirmPassword = (password: string, confirmPass: string) => password === 
 				}
 				<button className={'login-button'}>{isAuth ? 'Зарегистрироваться' : 'Авторизоваться'}</button>
 				<div className={isAuth ? 'auth-button-block' : 'register-button-block'}>
-					<button onClick={() => setIsAuth(!isAuth)}
-									className={'register-button'}>{isAuth ? 'Авторизоваться' : 'Зарегистрироваться'}</button>
+					<button
+						onClick={() => setIsAuth(!isAuth)}
+						className={'register-button'}
+					>{isAuth ? 'Авторизоваться' : 'Зарегистрироваться'}
+					</button>
 				</div>
 			</div>
 		</form>

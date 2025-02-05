@@ -1,14 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getUser} from "@/api/user";
+
+interface User {
+	login: string,
+	mail: string,
+	image_icon: string,
+	role: string,
+	id: undefined | number
+	token: string
+}
 
 const initialState = {
-	user: {
-		login: '',
-		mail: '',
-		image_icon: '',
-		role: '',
-		id: undefined
-	},
+	user: {} as User | null,
 	isLoading: false,
 	isError: false
 }
@@ -17,14 +19,13 @@ export const userSlice = createSlice({
 	name: 'createSlice',
 	initialState,
 	reducers: {
-
 		updateUser: (state, action) => {
 			state.user = action.payload
 			state.isLoading = false
 		},
-		clearUser: (state, action) => {
+		clearUser: (state) => {
 			state.isLoading = true
-			state.user = action.payload
+			state.user = null
 			state.isLoading = false
 		}
 	}

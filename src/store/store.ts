@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 	userSlice,
 })
 
-export const setupStore = (preloadedState) => {
+export const setupStore = (preloadedState: any) => {
 		return configureStore({
 		reducer: rootReducer,
 		preloadedState,

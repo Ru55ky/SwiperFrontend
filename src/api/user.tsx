@@ -2,22 +2,18 @@ import {AxiosResponse} from "axios";
 import baseServer from '../base'
 
 export const createUser: (body: any) => Promise<AxiosResponse<any[]>> = async (body) => {
-	const res = await baseServer.post(`/auth/register`, body);
-	return res;
+	return await baseServer.post(`/auth/register`, body);
 };
 
 export const loginUser: (body: any) => Promise<AxiosResponse<any>> = async(body) => {
-	const res = await baseServer.post('/auth/login', body)
-	return res
+	return await baseServer.post('/auth/login', body)
 }
 
 export const logoutUser: () => Promise<AxiosResponse<any>> = async() => {
-	const res = await baseServer.get('/auth/logout')
-	return res
+	return await baseServer.get('/auth/logout')
 }
 
-export const getUser: () => Promise<AxiosResponse<any>> = async() => {
-	const res = await baseServer.get('/user/')
-	return res
+export const getUser: (id: number) => Promise<AxiosResponse<any>> = async(id: number) => {
+	return await baseServer.get(`/user/${id}`)
 }
 
