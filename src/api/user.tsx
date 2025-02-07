@@ -13,7 +13,7 @@ export const logoutUser: () => Promise<AxiosResponse<any>> = async() => {
 	return await baseServer.get('/auth/logout')
 }
 
-export const getUser: (id: number) => Promise<AxiosResponse<any>> = async(id: number) => {
-	return await baseServer.get(`/user/${id}`)
+export const getUser: () => Promise<AxiosResponse<any>> = async() => {
+	return await baseServer.get(`/user`)
 }
 

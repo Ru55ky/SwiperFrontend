@@ -25,7 +25,7 @@ export default function Home() {
   }, []);
 
   async function getUserDetails() {
-    const response = await getUser(user?.id)
+    const response = await getUser()
     dispatch(updateUser(response.data))
   }
 

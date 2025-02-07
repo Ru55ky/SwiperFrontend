@@ -22,7 +22,7 @@ export default function ChatComponent () {
 				// userId: currentUser.id,
 				// roomId: currentRoom.id,
 				message: message,
-				user_id: 1,
+				user_id: 9,
 				room_id: 1,
 			});
 			setMessage('')
